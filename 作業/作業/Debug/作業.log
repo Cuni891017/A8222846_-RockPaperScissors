@@ -1,4 +1,0 @@
-﻿  Source.cpp
-c:\users\7si10\source\repos\作業\作業\source.cpp(29): warning C4244: '引數': 將 'time_t' 轉換為 'unsigned int'，由於類型不同，可能導致資料遺失
-c:\users\7si10\source\repos\作業\作業\source.cpp(24): warning C4715: 'getWins': 不是所有控制路徑都傳回值
-  作業.vcxproj -> C:\Users\7si10\source\repos\作業\Debug\作業.exe
