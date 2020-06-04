@@ -39,6 +39,7 @@ int main() {
 	int mode;
 	cin >> mode;
 	system("cls");
+	cout << "●Rock Papper Scissors" << endl;
 
 	while (mode != 0) {
 		cout << "Rock:0  Paper:5  Scissors:2" << endl;
@@ -46,18 +47,21 @@ int main() {
 		if (mode == 1) { //故事模式(共3關,3BOSS)
 			RPS Player(name, 5); //玩家
 			RPS R1("Cuni", 3), R2("Mike", 3), R3("Boss", 5); //BOSS
-			RPS ROBOT[3] = { R1,R2,R3 };
-			int bot = 0; //關卡
-			RPS *pRobot = &ROBOT[bot];
+			int level = 0;
+			const int NumOfL = 3; //關卡,關卡數
+			RPS ROBOT[NumOfL] = { R1,R2,R3 };
+			RPS *pRobot = &ROBOT[level];
 
-			cout << "Story Mode" << endl;
-			while (Player.getChips() != 0 && ROBOT[3].getChips() != 0) {
-				if (pRobot->getChips() == 0) {
-					bot++; //下一關
+			cout << "Story Mode (3BOSS : Cuni->Mike->Boss)" << endl;
+			cout << "Your HP:" << Player.getChips() << " " << pRobot->getName() << "'s HP:" << pRobot->getChips() << endl << endl;
+			while (Player.getChips() != 0 && ROBOT[2].getChips() != 0) {
+				if (pRobot->getChips() == 0 && level != 2) {
+					level++; //下一關
 					cout << pRobot->getName() << " dead" << endl;
-					pRobot = &ROBOT[bot];
+					pRobot = &ROBOT[level];
 					cout << pRobot->getName() << " is coming" << endl;
 					cout << "Your HP:" << Player.getChips() << " " << pRobot->getName() << "'s HP:" << pRobot->getChips() << endl << endl;
+				
 				}
 
 				cout << "Put:";
@@ -67,6 +71,7 @@ int main() {
 					cout << "Rock:0  Paper:5  Scissors:2" << endl;
 					cout << "Put:";
 					cin >> Pput;
+					cout << endl;
 				}
 
 				Rput = rand() % 3; //機器人put
@@ -107,7 +112,9 @@ int main() {
 		else if (mode == 2) { //籌碼模式
 			cout << "Chips Mode" << endl;
 		}
+
 		cout << endl;
+		cout << "●Rock Papper Scissors" << endl;
 		cout << "Select mode" << endl; //選模式
 		cout << " ‧Story press '1' " << endl //故事
 			<< " ‧Chips press '2' " << endl //籌碼
